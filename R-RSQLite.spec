@@ -4,7 +4,7 @@
 #
 Name     : R-RSQLite
 Version  : 2.1.0
-Release  : 8
+Release  : 9
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.1.0.tar.gz
 Summary  : 'SQLite' Interface for R
