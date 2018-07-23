@@ -1,0 +1,11 @@
+2.1.1
+R-BH
+R-plogr
+R-Rcpp
+R-bit64
+R-DBI
+R-DBItest
+R-blob
+R-markdown
+R-pkgconfig
+R-memoise
