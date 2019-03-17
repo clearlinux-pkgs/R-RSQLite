@@ -4,23 +4,13 @@
 #
 Name     : R-RSQLite
 Version  : 2.1.1
-Release  : 16
+Release  : 17
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.1.1.tar.gz
 Summary  : 'SQLite' Interface for R
 Group    : Development/Tools
 License  : LGPL-2.0+
-Requires: R-RSQLite-lib
-Requires: R-BH
-Requires: R-DBI
-Requires: R-DBItest
-Requires: R-Rcpp
-Requires: R-bit64
-Requires: R-blob
-Requires: R-markdown
-Requires: R-memoise
-Requires: R-pkgconfig
-Requires: R-plogr
+Requires: R-RSQLite-lib = %{version}-%{release}
 BuildRequires : R-BH
 BuildRequires : R-DBI
 BuildRequires : R-DBItest
@@ -31,11 +21,12 @@ BuildRequires : R-markdown
 BuildRequires : R-memoise
 BuildRequires : R-pkgconfig
 BuildRequires : R-plogr
-BuildRequires : clr-R-helpers
+BuildRequires : buildreq-R
 
 %description
-provides an interface compliant with the 'DBI' package. The
-    source for the 'SQLite' engine is included.
+RSQLite
+=======
+[![Build Status](https://travis-ci.org/rstats-db/RSQLite.png?branch=master)](https://travis-ci.org/rstats-db/RSQLite) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rstats-db/RSQLite?branch=master&svg=true)](https://ci.appveyor.com/project/rstats-db/RSQLite) [![Coverage Status](https://codecov.io/gh/rstats-db/RSQLite/branch/master/graph/badge.svg)](https://codecov.io/github/rstats-db/RSQLite?branch=master)
 
 %package lib
 Summary: lib components for the R-RSQLite package.
@@ -53,11 +44,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532308499
+export SOURCE_DATE_EPOCH=1552858053
 
 %install
+export SOURCE_DATE_EPOCH=1552858053
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1532308499
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -92,8 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library RSQLite|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  RSQLite || :
 
 
 %files
@@ -124,7 +114,34 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/RSQLite/help/paths.rds
 /usr/lib64/R/library/RSQLite/html/00Index.html
 /usr/lib64/R/library/RSQLite/html/R.css
-/usr/lib64/R/library/RSQLite/libs/symbols.rds
+/usr/lib64/R/library/RSQLite/tests/testthat.R
+/usr/lib64/R/library/RSQLite/tests/testthat/dat-n.txt
+/usr/lib64/R/library/RSQLite/tests/testthat/dat-rn.txt
+/usr/lib64/R/library/RSQLite/tests/testthat/helper-DBItest.R
+/usr/lib64/R/library/RSQLite/tests/testthat/helper-astyle.R
+/usr/lib64/R/library/RSQLite/tests/testthat/helper-memdb.R
+/usr/lib64/R/library/RSQLite/tests/testthat/helper-tibble.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-DBItest.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-affinity.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-astyle.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-basic-types.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-blob.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-column-info.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-data-type.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-dbClearResult.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-dbConnect.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-dbSendQuery.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-dbWriteTable.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-dbWriteTableAutoincrement.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-error.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-exception.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-field-types.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-json.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-readonly.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-sd.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-sqliteCopyDatabase.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-sqliteQuickColumn.R
+/usr/lib64/R/library/RSQLite/tests/testthat/test-transactions.R
 
 %files lib
 %defattr(-,root,root,-)
