@@ -4,18 +4,20 @@
 #
 Name     : R-RSQLite
 Version  : 2.1.1
-Release  : 20
+Release  : 21
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.1.1.tar.gz
 Summary  : 'SQLite' Interface for R
 Group    : Development/Tools
 License  : LGPL-2.0+
 Requires: R-RSQLite-lib = %{version}-%{release}
-Requires: R-desc
+Requires: R-backports
+Requires: R-rprojroot
 BuildRequires : R-BH
 BuildRequires : R-DBI
 BuildRequires : R-DBItest
 BuildRequires : R-Rcpp
+BuildRequires : R-backports
 BuildRequires : R-bit64
 BuildRequires : R-blob
 BuildRequires : R-desc
@@ -23,12 +25,15 @@ BuildRequires : R-markdown
 BuildRequires : R-memoise
 BuildRequires : R-pkgconfig
 BuildRequires : R-plogr
+BuildRequires : R-rprojroot
 BuildRequires : buildreq-R
+Patch1: 0001-Upgrade-to-SQLite-3.23.1.patch
+Patch2: 0002-Update-bundled-sqlite3-to-3.24-262.patch
+Patch3: 0003-Upgrade-to-sqlite-3.25.3.patch
 
 %description
-RSQLite
-=======
-[![Build Status](https://travis-ci.org/rstats-db/RSQLite.png?branch=master)](https://travis-ci.org/rstats-db/RSQLite) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rstats-db/RSQLite?branch=master&svg=true)](https://ci.appveyor.com/project/rstats-db/RSQLite) [![Coverage Status](https://codecov.io/gh/rstats-db/RSQLite/branch/master/graph/badge.svg)](https://codecov.io/github/rstats-db/RSQLite?branch=master)
+provides an interface compliant with the 'DBI' package. The
+    source for the 'SQLite' engine is included.
 
 %package lib
 Summary: lib components for the R-RSQLite package.
@@ -40,16 +45,19 @@ lib components for the R-RSQLite package.
 
 %prep
 %setup -q -c -n RSQLite
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552954096
+export SOURCE_DATE_EPOCH=1554843423
 
 %install
-export SOURCE_DATE_EPOCH=1552954096
+export SOURCE_DATE_EPOCH=1554843423
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -85,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  RSQLite || :
+R CMD check --no-manual --no-examples --no-codoc RSQLite || :
 
 
 %files
