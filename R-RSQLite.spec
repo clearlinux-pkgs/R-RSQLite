@@ -4,15 +4,13 @@
 #
 Name     : R-RSQLite
 Version  : 2.1.1
-Release  : 23
+Release  : 24
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.1.1.tar.gz
 Summary  : 'SQLite' Interface for R
 Group    : Development/Tools
 License  : LGPL-2.0+
 Requires: R-RSQLite-lib = %{version}-%{release}
-Requires: R-backports
-Requires: R-rprojroot
 BuildRequires : R-BH
 BuildRequires : R-DBI
 BuildRequires : R-DBItest
@@ -54,10 +52,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554843423
+export SOURCE_DATE_EPOCH=1560203042
 
 %install
-export SOURCE_DATE_EPOCH=1554843423
+export SOURCE_DATE_EPOCH=1560203042
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
