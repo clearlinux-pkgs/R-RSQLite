@@ -1,14 +1,6 @@
-2.1.1
+2.1.2
 R-BH
-R-DBI
 R-DBItest
-R-Rcpp
-R-backports
-R-bit64
-R-blob
 R-desc
-R-markdown
-R-memoise
-R-pkgconfig
 R-plogr
 R-rprojroot
