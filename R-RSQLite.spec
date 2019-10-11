@@ -4,24 +4,19 @@
 #
 Name     : R-RSQLite
 Version  : 2.1.2
-Release  : 27
+Release  : 28
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.1.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.1.2.tar.gz
 Summary  : 'SQLite' Interface for R
 Group    : Development/Tools
 License  : LGPL-2.0+
 Requires: R-RSQLite-lib = %{version}-%{release}
-Requires: R-BH
 Requires: R-DBI
-Requires: R-DBItest
 Requires: R-Rcpp
 Requires: R-bit64
 Requires: R-blob
-Requires: R-desc
 Requires: R-memoise
 Requires: R-pkgconfig
-Requires: R-plogr
-Requires: R-rprojroot
 BuildRequires : R-BH
 BuildRequires : R-DBI
 BuildRequires : R-DBItest
@@ -34,6 +29,7 @@ BuildRequires : R-pkgconfig
 BuildRequires : R-plogr
 BuildRequires : R-rprojroot
 BuildRequires : buildreq-R
+Patch1: CVE-2019-16168.patch
 
 %description
 provides an interface compliant with the 'DBI' package. The
@@ -49,16 +45,17 @@ lib components for the R-RSQLite package.
 
 %prep
 %setup -q -c -n RSQLite
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564082364
+export SOURCE_DATE_EPOCH=1570764469
 
 %install
-export SOURCE_DATE_EPOCH=1564082364
+export SOURCE_DATE_EPOCH=1570764469
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
