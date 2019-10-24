@@ -4,7 +4,7 @@
 #
 Name     : R-RSQLite
 Version  : 2.1.2
-Release  : 28
+Release  : 29
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.1.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.1.2.tar.gz
 Summary  : 'SQLite' Interface for R
@@ -29,11 +29,23 @@ BuildRequires : R-pkgconfig
 BuildRequires : R-plogr
 BuildRequires : R-rprojroot
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 Patch1: CVE-2019-16168.patch
 
 %description
-provides an interface compliant with the 'DBI' package. The
-    source for the 'SQLite' engine is included.
+# RSQLite
+<!-- badges: start -->
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Build
+Status](https://travis-ci.org/r-dbi/RSQLite.png?branch=master)](https://travis-ci.org/r-dbi/RSQLite)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/r-dbi/RSQLite?branch=master&svg=true)](https://ci.appveyor.com/project/r-dbi/RSQLite)
+[![Coverage
+Status](https://codecov.io/gh/r-dbi/RSQLite/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/RSQLite?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/RSQLite)](https://cran.r-project.org/package=RSQLite)
+<!-- badges: end -->
 
 %package lib
 Summary: lib components for the R-RSQLite package.
@@ -52,10 +64,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570764469
+export SOURCE_DATE_EPOCH=1571898942
 
 %install
-export SOURCE_DATE_EPOCH=1570764469
+export SOURCE_DATE_EPOCH=1571898942
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
