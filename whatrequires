@@ -1,5 +1,6 @@
 # This file contains recursive sources that require this package
 R-BatchJobs
+R-DBI
 R-SGP
 R-dbplyr
 R-glue
