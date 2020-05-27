@@ -1,3 +1,6 @@
 # This file contains recursive sources that require this package
 R-BatchJobs
+R-DBItest
 R-SGP
+R-dbplyr
+R-survey

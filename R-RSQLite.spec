@@ -4,16 +4,17 @@
 #
 Name     : R-RSQLite
 Version  : 2.2.0
-Release  : 38
+Release  : 39
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.2.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.2.0.tar.gz
-Source1  : https://sqlite.org/2020/sqlite-autoconf-3310100.tar.gz
+Source1  : https://sqlite.org/2020/sqlite-autoconf-3320100.tar.gz
 Summary  : 'SQLite' Interface for R
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: R-RSQLite-lib = %{version}-%{release}
 Requires: R-BH
 Requires: R-DBI
+Requires: R-DBItest
 Requires: R-Rcpp
 Requires: R-bit64
 Requires: R-blob
@@ -22,6 +23,7 @@ Requires: R-pkgconfig
 Requires: R-plogr
 BuildRequires : R-BH
 BuildRequires : R-DBI
+BuildRequires : R-DBItest
 BuildRequires : R-Rcpp
 BuildRequires : R-bit64
 BuildRequires : R-blob
@@ -45,20 +47,20 @@ lib components for the R-RSQLite package.
 %prep
 %setup -q -c -n RSQLite
 cd %{_builddir}
-tar xf %{_sourcedir}/sqlite-autoconf-3310100.tar.gz
+tar xf %{_sourcedir}/sqlite-autoconf-3320100.tar.gz
 cd %{_builddir}/RSQLite
 mkdir -p RSQLite/src/vendor/sqlite/
-cp -r %{_builddir}/sqlite-autoconf-3310100/* %{_builddir}/RSQLite/RSQLite/src/vendor/sqlite/
+cp -r %{_builddir}/sqlite-autoconf-3320100/* %{_builddir}/RSQLite/RSQLite/src/vendor/sqlite/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589586535
+export SOURCE_DATE_EPOCH=1590602169
 
 %install
-export SOURCE_DATE_EPOCH=1589586535
+export SOURCE_DATE_EPOCH=1590602169
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
