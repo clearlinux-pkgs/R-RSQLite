@@ -4,7 +4,7 @@
 #
 Name     : R-RSQLite
 Version  : 2.2.1
-Release  : 42
+Release  : 43
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.2.1.tar.gz
 Source1  : https://sqlite.org/2020/sqlite-autoconf-3320100.tar.gz
