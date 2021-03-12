@@ -1,5 +1,5 @@
 PKG_NAME := R-RSQLite
-URL = https://cran.r-project.org/src/contrib/RSQLite_2.2.3.tar.gz
+URL = https://cran.r-project.org/src/contrib/RSQLite_2.2.4.tar.gz
 ARCHIVES = https://sqlite.org/2020/sqlite-autoconf-3340000.tar.gz RSQLite/src/vendor/sqlite/
 
 include ../common/Makefile.common
