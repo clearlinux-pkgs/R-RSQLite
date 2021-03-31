@@ -4,10 +4,9 @@
 #
 Name     : R-RSQLite
 Version  : 2.2.5
-Release  : 48
+Release  : 49
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.2.5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.2.5.tar.gz
-Source1  : https://sqlite.org/2020/sqlite-autoconf-3340000.tar.gz
 Summary  : 'SQLite' Interface for R
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -44,21 +43,17 @@ lib components for the R-RSQLite package.
 
 %prep
 %setup -q -c -n RSQLite
-cd %{_builddir}
-tar xf %{_sourcedir}/sqlite-autoconf-3340000.tar.gz
 cd %{_builddir}/RSQLite
-mkdir -p RSQLite/src/vendor/sqlite/
-cp -r %{_builddir}/sqlite-autoconf-3340000/* %{_builddir}/RSQLite/RSQLite/src/vendor/sqlite/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1617037015
+export SOURCE_DATE_EPOCH=1617216736
 
 %install
-export SOURCE_DATE_EPOCH=1617037015
+export SOURCE_DATE_EPOCH=1617216736
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
