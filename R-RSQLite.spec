@@ -4,7 +4,7 @@
 #
 Name     : R-RSQLite
 Version  : 2.3.0
-Release  : 82
+Release  : 83
 URL      : https://cran.r-project.org/src/contrib/RSQLite_2.3.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RSQLite_2.3.0.tar.gz
 Summary  : SQLite Interface for R
@@ -26,9 +26,6 @@ BuildRequires : R-memoise
 BuildRequires : R-pkgconfig
 BuildRequires : R-plogr
 BuildRequires : buildreq-R
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 interface compliant with the DBI package. The source for the SQLite
@@ -54,10 +51,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1676658339
+export SOURCE_DATE_EPOCH=1678834698
 
 %install
-export SOURCE_DATE_EPOCH=1676658339
+export SOURCE_DATE_EPOCH=1678834698
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
